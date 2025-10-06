@@ -1,0 +1,143 @@
+========================================
+FORWARD LMS - XAMPP LOCAL SETUP GUIDE
+========================================
+
+PREREQUISITES
+-------------
+1. XAMPP installed (Apache + PHP 7.4+ + MySQL/PostgreSQL)
+2. Composer (PHP dependency manager) - Optional
+3. Text editor (VS Code, Sublime, etc.)
+
+STEP 1: INSTALL XAMPP
+----------------------
+1. Download XAMPP from https://www.apachefriends.org/
+2. Install to C:\xampp (Windows) or /opt/lampp (Linux)
+3. Start Apache and MySQL services
+
+STEP 2: PROJECT SETUP
+---------------------
+1. Copy the 'forward' project folder to:
+   - Windows: C:\xampp\htdocs\forward
+   - Linux/Mac: /opt/lampp/htdocs/forward
+
+2. Update Windows hosts file (C:\Windows\System32\drivers\etc\hosts):
+   Add this line:
+   127.0.0.1    forward.local
+
+3. Configure Apache Virtual Host:
+   - Open xampp/apache/conf/extra/httpd-vhosts.conf
+   - Add the contents from xampp-vhosts.conf file
+   - Restart Apache
+
+STEP 3: DATABASE SETUP
+----------------------
+This project uses Supabase (PostgreSQL) for database.
+
+Option A: Use Supabase Cloud (Recommended)
+1. Sign up at https://supabase.com
+2. Create a new project
+3. Copy your database credentials from Project Settings > Database
+4. Update backend/config/db.php with your Supabase credentials
+
+Option B: Local PostgreSQL
+1. Install PostgreSQL locally
+2. Create a database named 'forward_lms'
+3. Run migration files from database/migrations/ folder in order
+4. Update backend/config/db.php with local credentials
+
+STEP 4: CONFIGURATION
+---------------------
+1. Copy backend/config/db.php.example to db.php (if exists)
+2. Update Supabase credentials:
+   - SUPABASE_URL
+   - SUPABASE_KEY
+   - SUPABASE_SERVICE_KEY
+
+3. Configure third-party integrations in backend/config/third-party/
+   - Zoom API keys (optional)
+   - Stripe keys (optional)
+   - Other API keys as needed
+
+STEP 5: PHP CONFIGURATION
+--------------------------
+1. Copy php.ini to xampp/php/php.ini (backup original first)
+2. Or edit your existing php.ini with settings from provided php.ini
+3. Restart Apache
+
+STEP 6: FILE PERMISSIONS
+-------------------------
+Ensure these directories are writable:
+- backend/logs/
+- frontend/assets/images/uploads/
+- shared/temp/
+
+Windows: Right-click > Properties > Security > Edit
+Linux/Mac: chmod 755 (directories) and chmod 644 (files)
+
+STEP 7: ACCESS THE APPLICATION
+-------------------------------
+1. Open browser
+2. Navigate to: http://forward.local
+3. Default admin login (after seeding):
+   Email: admin@forward.local
+   Password: admin123
+
+STEP 8: TESTING
+---------------
+1. Create a teacher account
+2. Create a test course
+3. Enroll as a student
+4. Test live class features
+5. Issue a test certificate
+
+TROUBLESHOOTING
+---------------
+Problem: "Database connection failed"
+Solution: Check db.php credentials and ensure PostgreSQL is running
+
+Problem: "404 Not Found"
+Solution: Check .htaccess exists and mod_rewrite is enabled in Apache
+
+Problem: "Permission denied"
+Solution: Check file permissions on logs and upload directories
+
+Problem: "Session not working"
+Solution: Check session.save_path in php.ini is writable
+
+Problem: "Upload files not working"
+Solution: Check upload_max_filesize and post_max_size in php.ini
+
+SECURITY NOTES
+--------------
+1. Change default admin password immediately
+2. Update all API keys in config files
+3. Enable HTTPS in production
+4. Set display_errors = Off in production php.ini
+5. Use strong passwords for database
+
+ADDITIONAL FEATURES
+-------------------
+1. WebRTC Live Classes: Requires HTTPS for production
+2. Blockchain Certificates: Mock implementation included
+3. Metaverse Campus: Requires modern browser with WebGL support
+4. Plugin System: Check backend/plugins/ for available integrations
+
+SUPPORT
+-------
+For issues, check:
+1. Apache error logs: xampp/apache/logs/error.log
+2. PHP error logs: logs/php_error.log
+3. Application logs: backend/logs/app.log
+
+NEXT STEPS
+----------
+1. Configure email settings for notifications
+2. Set up backup schedule for database
+3. Configure CDN for media files (optional)
+4. Enable caching for better performance
+5. Set up monitoring and analytics
+
+========================================
+Forward LMS v1.0.0
+Community-Driven Learning Platform
+========================================
