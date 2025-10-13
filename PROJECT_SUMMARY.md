@@ -122,7 +122,7 @@ Forward LMS is a complete, production-ready PHP-based Learning Management System
 
 ## Directory Structure Created
 
-```
+\`\`\`
 forward/
 ├── backend/
 │   ├── config/
@@ -180,7 +180,7 @@ forward/
 ├── xampp-setup-guide.txt
 ├── README.md
 └── PROJECT_SUMMARY.md
-```
+\`\`\`
 
 ## Database Connection Details
 
@@ -302,16 +302,16 @@ The following pages are defined in your architecture but not yet implemented:
 
 ### 1. Place Files
 Copy the entire `forward/` directory to your XAMPP htdocs folder:
-```
+\`\`\`
 C:\xampp\htdocs\forward\  (Windows)
 /opt/lampp/htdocs/forward/  (Linux)
-```
+\`\`\`
 
 ### 2. Configure Hosts File
 Add to your hosts file:
-```
+\`\`\`
 127.0.0.1    forward.local
-```
+\`\`\`
 
 ### 3. Configure Apache
 Add virtual host configuration from `xampp-vhosts.conf` to Apache's vhosts file.

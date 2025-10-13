@@ -1,19 +1,19 @@
 # Forward LMS API Documentation
 
 ## Base URL
-```
+\`\`\`
 http://forward.local/backend/api
-```
+\`\`\`
 
 ## Authentication
 
 All authenticated endpoints require a valid session cookie.
 
 ### Headers
-```
+\`\`\`
 Content-Type: application/json
 Cookie: FORWARD_SESSION=<session_id>
-```
+\`\`\`
 
 ## Auth Endpoints
 
@@ -21,15 +21,15 @@ Cookie: FORWARD_SESSION=<session_id>
 Login user
 
 **Request:**
-```json
+\`\`\`json
 {
   "email": "user@example.com",
   "password": "password123"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "message": "Login successful",
@@ -37,13 +37,13 @@ Login user
     "redirect_url": "/frontend/student/dashboard.php"
   }
 }
-```
+\`\`\`
 
 ### POST /auth/register.php
 Register new user
 
 **Request:**
-```json
+\`\`\`json
 {
   "email": "user@example.com",
   "password": "password123",
@@ -53,10 +53,10 @@ Register new user
   "role": "student",
   "captcha": "ABC123"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "message": "Registration successful",
@@ -64,7 +64,7 @@ Register new user
     "redirect_url": "/frontend/student/dashboard.php"
   }
 }
-```
+\`\`\`
 
 ### GET /auth/logout.php
 Logout user
@@ -83,7 +83,7 @@ Get all published courses
 - `search` (optional): Search term
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "data": {
@@ -104,13 +104,13 @@ Get all published courses
     }
   }
 }
-```
+\`\`\`
 
 ### POST /courses/create.php
 Create new course (Teacher only)
 
 **Request:**
-```json
+\`\`\`json
 {
   "title": "Course Title",
   "description": "Course description",
@@ -118,10 +118,10 @@ Create new course (Teacher only)
   "status": "draft",
   "thumbnail_url": "/path/to/image.jpg"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "message": "Course created successfully",
@@ -129,20 +129,20 @@ Create new course (Teacher only)
     "course_id": "uuid"
   }
 }
-```
+\`\`\`
 
 ### POST /courses/enroll.php
 Enroll in course (Student only)
 
 **Request:**
-```json
+\`\`\`json
 {
   "course_id": "uuid"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "message": "Enrolled successfully",
@@ -150,7 +150,7 @@ Enroll in course (Student only)
     "enrollment_id": "uuid"
   }
 }
-```
+\`\`\`
 
 ## Certificate Endpoints
 
@@ -158,15 +158,15 @@ Enroll in course (Student only)
 Issue certificate (Teacher/Admin only)
 
 **Request:**
-```json
+\`\`\`json
 {
   "student_id": "uuid",
   "course_id": "uuid"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "message": "Certificate issued successfully",
@@ -177,7 +177,7 @@ Issue certificate (Teacher/Admin only)
     "download_url": "/path/to/certificate.pdf"
   }
 }
-```
+\`\`\`
 
 ### GET /certificates/download.php
 Download certificate
@@ -198,7 +198,7 @@ Get teacher availability
 - `date`: Date in YYYY-MM-DD format
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "data": {
@@ -214,20 +214,20 @@ Get teacher availability
     ]
   }
 }
-```
+\`\`\`
 
 ### POST /schedule/book.php
 Book a schedule (Student only)
 
 **Request:**
-```json
+\`\`\`json
 {
   "schedule_id": "uuid"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "message": "Schedule booked successfully",
@@ -236,7 +236,7 @@ Book a schedule (Student only)
     "meeting_url": "https://meeting.url"
   }
 }
-```
+\`\`\`
 
 ## Reward Endpoints
 
@@ -244,7 +244,7 @@ Book a schedule (Student only)
 Get student reward balance
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "data": {
@@ -258,22 +258,22 @@ Get student reward balance
     ]
   }
 }
-```
+\`\`\`
 
 ### POST /rewards/redeem.php
 Redeem reward points (Student only)
 
 **Request:**
-```json
+\`\`\`json
 {
   "points": 100,
   "reward_type": "course_discount",
   "description": "10% off next course"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "message": "Reward redeemed successfully",
@@ -282,7 +282,7 @@ Redeem reward points (Student only)
     "remaining_balance": 400
   }
 }
-```
+\`\`\`
 
 ## WebRTC Signaling
 
@@ -290,16 +290,16 @@ Redeem reward points (Student only)
 WebRTC signaling for live classes
 
 **Request:**
-```json
+\`\`\`json
 {
   "type": "offer|answer|ice-candidate",
   "data": {},
   "room_id": "uuid"
 }
-```
+\`\`\`
 
 **Response:**
-```json
+\`\`\`json
 {
   "success": true,
   "data": {
@@ -307,18 +307,18 @@ WebRTC signaling for live classes
     "data": {}
   }
 }
-```
+\`\`\`
 
 ## Error Responses
 
 All endpoints return errors in this format:
 
-```json
+\`\`\`json
 {
   "success": false,
   "error": "Error message description"
 }
-```
+\`\`\`
 
 ### Common Error Codes
 - `400` - Bad Request (invalid parameters)
@@ -337,6 +337,6 @@ No rate limiting implemented in current version.
 Current API version: v1.0.0
 
 Future versions will be accessed via:
-```
+\`\`\`
 /backend/api/v2/endpoint
-```
+\`\`\`

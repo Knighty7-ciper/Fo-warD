@@ -1,0 +1,139 @@
+.certificates-header {
+  margin-bottom: 2rem;
+}
+
+.certificates-header h1 {
+  margin: 0 0 0.5rem 0;
+}
+
+.certificates-header p {
+  color: #6b7280;
+  margin: 0;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.certificate-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.certificate-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-thumbnail {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem;
+}
+
+.certificate-content {
+  padding: 1.5rem;
+}
+
+.certificate-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.certificate-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.certificate-number {
+  font-family: monospace;
+  background: #f3f4f6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.certificate-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.empty-state h2 {
+  margin: 0 0 1rem 0;
+  color: #6b7280;
+}
+
+.empty-state p {
+  color: #9ca3af;
+  margin: 0 0 2rem 0;
+}
+
+.verification-info {
+  padding: 1rem 0;
+}
+
+.verification-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.verification-item:last-child {
+  border-bottom: none;
+}
+
+.verification-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.verification-value {
+  color: #6b7280;
+  text-align: right;
+}
+
+.verification-hash {
+  font-family: monospace;
+  font-size: 0.75rem;
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .certificates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-actions {
+    flex-direction: column;
+  }
+
+  .certificate-actions .btn {
+    width: 100%;
+  }
+}

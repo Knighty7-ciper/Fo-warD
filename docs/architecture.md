@@ -25,7 +25,7 @@ Forward LMS is a community-driven online learning platform built with PHP and Su
 
 ## Directory Structure
 
-```
+\`\`\`
 forward/
 ├── backend/         # Server-side logic
 │   ├── config/      # Configuration files
@@ -50,7 +50,7 @@ forward/
 │   └── utils/       # Utility functions
 ├── configs/         # Server configurations
 └── docs/           # Documentation
-```
+\`\`\`
 
 ## Database Schema
 

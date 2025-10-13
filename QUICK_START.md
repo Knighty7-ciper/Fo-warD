@@ -13,9 +13,9 @@ Copy this `forward` folder to:
 
 ### Step 3: Add Hosts Entry
 Add this line to your hosts file:
-```
+\`\`\`
 127.0.0.1    forward.local
-```
+\`\`\`
 
 **Hosts file location:**
 - Windows: `C:\Windows\System32\drivers\etc\hosts`
@@ -23,7 +23,7 @@ Add this line to your hosts file:
 
 ### Step 4: Configure Apache
 Add to `xampp/apache/conf/extra/httpd-vhosts.conf`:
-```apache
+\`\`\`apache
 <VirtualHost *:80>
     ServerName forward.local
     DocumentRoot "C:/xampp/htdocs/forward"
@@ -33,14 +33,14 @@ Add to `xampp/apache/conf/extra/httpd-vhosts.conf`:
         Require all granted
     </Directory>
 </VirtualHost>
-```
+\`\`\`
 
 ### Step 5: Enable PHP Extensions
 Open `xampp/php/php.ini` and enable:
-```ini
+\`\`\`ini
 extension=pdo_pgsql
 extension=pgsql
-```
+\`\`\`
 
 ### Step 6: Start Apache
 1. Open XAMPP Control Panel

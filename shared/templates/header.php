@@ -42,6 +42,16 @@ $user_role = Auth::getUserRole();
                 </a>
             </div>
 
+             Added global search bar to header 
+            <?php if ($is_logged_in): ?>
+            <div class="nav-search">
+                <form action="/frontend/search.php" method="GET">
+                    <input type="text" name="q" placeholder="Search..." class="search-input">
+                    <button type="submit" class="search-btn">🔍</button>
+                </form>
+            </div>
+            <?php endif; ?>
+
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="/" class="nav-link">Home</a></li>
                 <li><a href="/frontend/courses.php" class="nav-link">Courses</a></li>

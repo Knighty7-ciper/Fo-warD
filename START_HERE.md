@@ -76,7 +76,7 @@ Login at http://forward.local/frontend/login.php
 
 ## 🗂️ Project Structure
 
-```
+\`\`\`
 forward/
 ├── backend/          ← PHP business logic
 │   ├── config/      ← Database, auth, integrations
@@ -94,7 +94,7 @@ forward/
 ├── database/        ← Migrations and seeds
 ├── docs/           ← Documentation
 └── supabase/       ← Applied migrations
-```
+\`\`\`
 
 ## 🔧 Technology Stack
 

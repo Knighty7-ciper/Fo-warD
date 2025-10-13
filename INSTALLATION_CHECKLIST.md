@@ -57,7 +57,7 @@ The database is already set up! Verify:
 ## ✅ Step 6: File Permissions (Linux/Mac only)
 
 Create required directories and set permissions:
-```bash
+\`\`\`bash
 cd /path/to/forward
 mkdir -p backend/logs
 mkdir -p frontend/assets/uploads
@@ -65,7 +65,7 @@ mkdir -p frontend/assets/certificates
 chmod 755 backend/logs
 chmod 755 frontend/assets/uploads
 chmod 755 frontend/assets/certificates
-```
+\`\`\`
 
 ## ✅ Step 7: Start Services
 

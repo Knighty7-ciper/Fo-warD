@@ -1,0 +1,170 @@
+.attendance-summary {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.summary-stat {
+  text-align: center;
+}
+
+.summary-stat .value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.summary-stat .label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #059669);
+  transition: width 0.3s ease;
+}
+
+.progress-fill.low {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.progress-fill.medium {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+
+.attendance-records {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.attendance-records h2 {
+  margin: 0 0 1.5rem 0;
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 6px;
+  border-left: 4px solid transparent;
+}
+
+.record-item.present {
+  border-left-color: #10b981;
+}
+
+.record-item.absent {
+  border-left-color: #ef4444;
+}
+
+.record-item.late {
+  border-left-color: #f59e0b;
+}
+
+.record-item.excused {
+  border-left-color: #6366f1;
+}
+
+.record-info h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+}
+
+.record-meta {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.record-status {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.record-status.present {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.record-status.absent {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.record-status.late {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.record-status.excused {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+#selfCheckinSection {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .record-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  #selfCheckinSection {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .btn-large {
+    width: 100%;
+  }
+}

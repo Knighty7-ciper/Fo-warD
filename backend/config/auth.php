@@ -175,4 +175,48 @@ class Auth {
     }
 }
 
+function authenticate() {
+    Auth::init();
+    
+    if (!Auth::isAuthenticated()) {
+        return null;
+    }
+    
+    $user_id = Auth::getUserId();
+    if (!$user_id) {
+        return null;
+    }
+    
+    // Get full user data from database
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT id, name, email, role, avatar, bio, points FROM users WHERE id = ?");
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch();
+    
+    return $user;
+}
+
+// Helper function to require authentication
+function require_auth($allowed_roles = null) {
+    $user = authenticate();
+    
+    if (!$user) {
+        header('Location: /frontend/auth/login.php');
+        exit;
+    }
+    
+    if ($allowed_roles !== null) {
+        if (!is_array($allowed_roles)) {
+            $allowed_roles = [$allowed_roles];
+        }
+        
+        if (!in_array($user['role'], $allowed_roles)) {
+            http_response_code(403);
+            die('Access denied');
+        }
+    }
+    
+    return $user;
+}
+
 ?>

@@ -1,0 +1,228 @@
+.student-grades-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 10px 0;
+}
+
+.page-header p {
+  font-size: 16px;
+  color: #718096;
+  margin: 0;
+}
+
+.gpa-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.gpa-content {
+  text-align: center;
+}
+
+.gpa-value {
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.gpa-label {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.gpa-stats {
+  display: flex;
+  gap: 40px;
+}
+
+.gpa-stats .stat-item {
+  text-align: center;
+}
+
+.gpa-stats .stat-value {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.gpa-stats .stat-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.courses-section h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 20px 0;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.course-grade-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-grade-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.course-thumbnail,
+.course-thumbnail-placeholder {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.course-thumbnail-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.course-info {
+  padding: 20px;
+}
+
+.course-info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0 0 15px 0;
+}
+
+.grade-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grade-percentage {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.grade-letter {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.no-grade {
+  font-size: 14px;
+  color: #718096;
+  font-style: italic;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.empty-state p {
+  font-size: 16px;
+  color: #718096;
+  margin: 0 0 20px 0;
+}
+
+.modal-large {
+  max-width: 900px;
+}
+
+.course-grade-summary {
+  background: #f7fafc;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: #718096;
+}
+
+.summary-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.grades-table-wrapper {
+  overflow-x: auto;
+}
+
+.grades-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.grades-detail-table th {
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 600;
+  color: #2d3748;
+  background: #f7fafc;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.grades-detail-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.grades-detail-table tbody tr:hover {
+  background: #f7fafc;
+}
+
+@media (max-width: 768px) {
+  .gpa-card {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}
