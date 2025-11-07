@@ -98,7 +98,19 @@ $course_id = $_GET['course_id'] ?? null;
             </div>
             
             <div id="questions-container">
-                 Questions will be added here dynamically 
+                <div class="questions-empty-state" id="questionsEmpty">
+                    <div class="empty-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>No questions yet</h3>
+                    <p>Add questions to your quiz to get started</p>
+                    <button type="button" class="btn btn-primary" onclick="addQuestion()">
+                        <i class="fas fa-plus"></i> Add First Question
+                    </button>
+                </div>
+                <div class="questions-list" id="questionsList" style="display: none;">
+                    <!-- Dynamic questions will be added here -->
+                </div>
             </div>
         </div>
     </form>

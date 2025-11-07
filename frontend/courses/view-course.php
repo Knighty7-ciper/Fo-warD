@@ -18,7 +18,7 @@ $stmt->execute([':course_id' => $course_id]);
 $course = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$course) {
-    header('Location: browse.php');
+    header('Location: ../courses.php');
     exit;
 }
 

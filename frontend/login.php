@@ -26,7 +26,7 @@ require_once __DIR__ . '/../shared/templates/header.php';
         <div class="auth-container">
             <div class="auth-form-wrapper">
                 <h1>Welcome Back</h1>
-                <p>Sign in to continue your learning journey</p>
+                <p>Sign in to access your account</p>
 
                 <form id="login-form" class="auth-form">
                     <div class="form-group">

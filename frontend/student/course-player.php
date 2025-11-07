@@ -17,7 +17,7 @@ $sql = "SELECT * FROM enrollments WHERE user_id = :user_id AND course_id = :cour
 $stmt = $db->prepare($sql);
 $stmt->execute([':user_id' => $_SESSION['user_id'], ':course_id' => $course_id]);
 if (!$stmt->fetch()) {
-    header('Location: ../courses/browse.php');
+    header('Location: ../courses.php');
     exit;
 }
 

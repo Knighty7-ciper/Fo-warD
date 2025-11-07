@@ -33,14 +33,14 @@ $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <div class="page-header">
         <h1>My Enrolled Courses</h1>
-        <a href="../courses/browse.php" class="btn btn-primary">Browse More Courses</a>
+        <a href="../courses.php" class="btn btn-primary">Browse More Courses</a>
     </div>
     
     <?php if (empty($courses)): ?>
         <div class="empty-state">
             <h2>You haven't enrolled in any courses yet</h2>
             <p>Start learning today by browsing our course catalog</p>
-            <a href="../courses/browse.php" class="btn btn-primary">Browse Courses</a>
+            <a href="../courses.php" class="btn btn-primary">Browse Courses</a>
         </div>
     <?php else: ?>
         <div class="courses-grid">

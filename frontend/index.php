@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Forward LMS - Community-Driven Learning Platform';
+$page_title = 'Forward LMS - Learning Management System';
 $body_class = 'homepage';
 
 require_once __DIR__ . '/../shared/templates/header.php';
@@ -9,7 +9,7 @@ require_once __DIR__ . '/../shared/templates/header.php';
     <div class="container">
         <div class="hero-content">
             <h1>Welcome to Forward LMS</h1>
-            <p class="hero-subtitle">Empower your learning journey with our community-driven platform</p>
+            <p class="hero-subtitle">A learning management system for education</p>
             <div class="hero-buttons">
                 <?php if (!$is_logged_in): ?>
                     <a href="/frontend/register.php" class="btn btn-primary">Get Started</a>
@@ -25,7 +25,7 @@ require_once __DIR__ . '/../shared/templates/header.php';
             </div>
         </div>
         <div class="hero-image">
-            <img src="/frontend/assets/images/bg-campus.jpg" alt="Learning Platform">
+            <img src="/frontend/assets/images/bg-campus.jpg" alt="Learning Platform" onerror="this.style.display='none';">
         </div>
     </div>
 </section>
@@ -36,65 +36,44 @@ require_once __DIR__ . '/../shared/templates/header.php';
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">📚</div>
-                <h3>Rich Course Library</h3>
-                <p>Access thousands of courses across various subjects and skill levels</p>
+                <h3>Course Management</h3>
+                <p>Create and organize courses with lessons, assignments, and materials</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🎓</div>
-                <h3>Certified Learning</h3>
-                <p>Earn blockchain-backed certificates upon course completion</p>
+                <h3>Student Progress</h3>
+                <p>Track student learning and issue completion certificates</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">👥</div>
-                <h3>Live Classes</h3>
-                <p>Attend real-time classes with WebRTC-powered video sessions</p>
+                <h3>Live Sessions</h3>
+                <p>Host video classes and online meetings with students</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🏆</div>
-                <h3>Rewards System</h3>
-                <p>Earn points for achievements and redeem them for perks</p>
+                <h3>Grading System</h3>
+                <p>Grade assignments and track student performance</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🌐</div>
-                <h3>Metaverse Campus</h3>
-                <p>Immersive 3D learning environment with virtual classrooms</p>
+                <div class="feature-icon">📊</div>
+                <h3>Reports</h3>
+                <p>View detailed reports on course performance and student progress</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💬</div>
-                <h3>Discussion Forums</h3>
-                <p>Collaborate with peers and engage in meaningful discussions</p>
+                <h3>Discussion Boards</h3>
+                <p>Enable students to ask questions and discuss course content</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="stats">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3 class="stat-number">1000+</h3>
-                <p>Active Students</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="stat-number">200+</h3>
-                <p>Expert Teachers</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="stat-number">500+</h3>
-                <p>Courses Available</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="stat-number">5000+</h3>
-                <p>Certificates Issued</p>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <section class="cta">
     <div class="container">
-        <h2>Ready to Start Learning?</h2>
-        <p>Join our community today and unlock your potential</p>
+        <h2>Get Started</h2>
+        <p>Create an account to begin using the learning management system</p>
         <?php if (!$is_logged_in): ?>
             <a href="/frontend/register.php" class="btn btn-primary btn-large">Sign Up Now</a>
         <?php endif; ?>

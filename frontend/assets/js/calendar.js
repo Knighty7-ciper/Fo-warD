@@ -137,13 +137,175 @@ function renderMonthView(container) {
 }
 
 function renderWeekView(container) {
-  // Simplified week view
-  container.innerHTML = '<div class="calendar-week"><p>Week view coming soon</p></div>'
+  const currentDate = calendarState.currentDate;
+  const startOfWeek = new Date(currentDate);
+  startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
+  
+  const weekEvents = calendarState.events.filter(event => {
+    const eventDate = new Date(event.start_date || event.start_time);
+    return eventDate >= startOfWeek && eventDate < new Date(startOfWeek.getTime() + 7 * 24 * 60 * 60 * 1000);
+  });
+  
+  let html = `
+    <div class="calendar-week">
+      <div class="week-header">
+        <div class="week-nav">
+          <button onclick="navigateWeek(-1)" class="btn btn-sm">
+            <i class="fas fa-chevron-left"></i> Previous Week
+          </button>
+          <h3>Week of ${formatDate(startOfWeek)}</h3>
+          <button onclick="navigateWeek(1)" class="btn btn-sm">
+            Next Week <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="week-grid">
+        <div class="time-column"></div>
+  `;
+  
+  // Add day headers
+  for (let i = 0; i < 7; i++) {
+    const dayDate = new Date(startOfWeek.getTime() + i * 24 * 60 * 60 * 1000);
+    const isToday = dayDate.toDateString() === new Date().toDateString();
+    const isCurrentMonth = dayDate.getMonth() === currentDate.getMonth();
+    
+    html += `
+      <div class="day-column ${isToday ? 'today' : ''} ${!isCurrentMonth ? 'other-month' : ''}">
+        <div class="day-header">
+          <div class="day-name">${dayDate.toLocaleDateString('en', { weekday: 'short' })}</div>
+          <div class="day-number">${dayDate.getDate()}</div>
+        </div>
+        <div class="day-events" data-date="${dayDate.toISOString().split('T')[0]}">
+    `;
+    
+    // Add events for this day
+    const dayEvents = weekEvents.filter(event => {
+      const eventDate = new Date(event.start_date || event.start_time);
+      return eventDate.toDateString() === dayDate.toDateString();
+    });
+    
+    dayEvents.forEach(event => {
+      const startTime = new Date(event.start_time || event.start_date).toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
+      const endTime = event.end_time ? new Date(event.end_time).toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' }) : '';
+      
+      html += `
+        <div class="event-item ${event.type}" onclick="editEvent(${event.id})" title="${event.title}">
+          <div class="event-time">${startTime}${endTime ? '-' + endTime : ''}</div>
+          <div class="event-title">${event.title}</div>
+        </div>
+      `;
+    });
+    
+    html += `
+        </div>
+      </div>
+    `;
+  }
+  
+  html += `
+      </div>
+      <div class="week-footer">
+        <button onclick="createEvent()" class="btn btn-primary btn-sm">
+          <i class="fas fa-plus"></i> Add Event
+        </button>
+      </div>
+    </div>
+  `;
+  
+  container.innerHTML = html;
+  addEventListeners();
+}
 }
 
 function renderDayView(container) {
-  // Simplified day view
-  container.innerHTML = '<div class="calendar-day-view"><p>Day view coming soon</p></div>'
+  const currentDate = calendarState.currentDate;
+  const dayEvents = calendarState.events.filter(event => {
+    const eventDate = new Date(event.start_date || event.start_time);
+    return eventDate.toDateString() === currentDate.toDateString();
+  });
+  
+  const isToday = currentDate.toDateString() === new Date().toDateString();
+  
+  let html = `
+    <div class="calendar-day-view">
+      <div class="day-header">
+        <div class="day-nav">
+          <button onclick="navigateDay(-1)" class="btn btn-sm">
+            <i class="fas fa-chevron-left"></i> Previous Day
+          </button>
+          <div class="day-title">
+            <h3>${currentDate.toLocaleDateString('en', { 
+              weekday: 'long', 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}</h3>
+            ${isToday ? '<span class="today-badge">Today</span>' : ''}
+          </div>
+          <button onclick="navigateDay(1)" class="btn btn-sm">
+            Next Day <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="day-timeline">
+        <div class="timeline-sidebar">
+          ${Array.from({length: 24}, (_, i) => `
+            <div class="timeline-hour">${i.toString().padStart(2, '0')}:00</div>
+          `).join('')}
+        </div>
+        
+        <div class="timeline-content">
+          <div class="timeline-grid">
+            ${Array.from({length: 24}, (_, i) => `
+              <div class="timeline-hour-row" data-hour="${i}"></div>
+            `).join('')}
+            
+            ${dayEvents.map(event => {
+              const startTime = new Date(event.start_time || event.start_date);
+              const endTime = new Date(event.end_time || event.start_time);
+              const duration = (endTime - startTime) / (1000 * 60 * 60); // hours
+              const top = startTime.getHours() * 60 + startTime.getMinutes();
+              
+              return `
+                <div class="timeline-event ${event.type}" 
+                     style="top: ${top}px; height: ${duration * 60}px;"
+                     onclick="editEvent(${event.id})"
+                     title="${event.title}">
+                  <div class="event-content">
+                    <div class="event-time">
+                      ${startTime.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' })}
+                      ${endTime > startTime ? '-' + endTime.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' }) : ''}
+                    </div>
+                    <div class="event-title">${event.title}</div>
+                    ${event.description ? `<div class="event-description">${event.description}</div>` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+      
+      <div class="day-footer">
+        <div class="events-summary">
+          <span class="events-count">${dayEvents.length} event${dayEvents.length !== 1 ? 's' : ''}</span>
+        </div>
+        <div class="day-actions">
+          <button onclick="createEvent()" class="btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i> Add Event
+          </button>
+          <button onclick="viewFullDay()" class="btn btn-secondary btn-sm">
+            <i class="fas fa-list"></i> List View
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  container.innerHTML = html;
+  addEventListeners();
+}
 }
 
 function renderListView(container) {
@@ -470,4 +632,39 @@ function deleteEventConfirm() {
 
 function exportCalendar() {
   window.location.href = "/backend/api/calendar.php?action=export"
+}
+
+// Week navigation functions
+function navigateWeek(direction) {
+  calendarState.currentDate.setDate(calendarState.currentDate.getDate() + (direction * 7));
+  const container = document.querySelector('.calendar-week-container') || document.querySelector('.calendar-content');
+  if (container) {
+    renderWeekView(container);
+  }
+}
+
+// Day navigation functions
+function navigateDay(direction) {
+  calendarState.currentDate.setDate(calendarState.currentDate.getDate() + direction);
+  const container = document.querySelector('.calendar-day-container') || document.querySelector('.calendar-content');
+  if (container) {
+    renderDayView(container);
+  }
+}
+
+// View full day function
+function viewFullDay() {
+  const container = document.querySelector('.calendar-content');
+  if (container) {
+    renderListView(container);
+  }
+}
+
+// Helper function to format date
+function formatDate(date) {
+  return date.toLocaleDateString('en', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
 }

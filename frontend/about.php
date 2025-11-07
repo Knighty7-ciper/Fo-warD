@@ -7,7 +7,7 @@ require_once __DIR__ . '/../shared/templates/header.php';
 <section class="page-hero">
     <div class="container">
         <h1>About Forward LMS</h1>
-        <p>Empowering learners and educators through innovative technology</p>
+        <p>Education platform for managing courses and students</p>
     </div>
 </section>
 
@@ -15,39 +15,39 @@ require_once __DIR__ . '/../shared/templates/header.php';
     <div class="container">
         <div class="about-content">
             <h2>Our Mission</h2>
-            <p>Forward LMS is dedicated to creating a community-driven online learning platform that combines the best of traditional education with cutting-edge technology. We believe in making quality education accessible to everyone, everywhere.</p>
+            <p>Forward LMS is a learning management system designed to help educators organize and deliver course content to students. It provides tools for course creation, student enrollment, progress tracking, and communication.</p>
 
-            <h2>What Makes Us Different</h2>
+            <h2>Key Features</h2>
             <div class="features-list">
                 <div class="feature-item">
-                    <h3>🎓 Blockchain Certificates</h3>
-                    <p>Earn verifiable, portable credentials stored on blockchain technology.</p>
+                    <h3>📚 Course Creation</h3>
+                    <p>Create and organize course materials, lessons, and assignments.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>🌐 Metaverse Campus</h3>
-                    <p>Experience immersive 3D learning environments with virtual classrooms.</p>
+                    <h3>👥 Student Management</h3>
+                    <p>Enroll students, track their progress, and manage course access.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>👥 Live Collaboration</h3>
-                    <p>Real-time video classes powered by WebRTC technology.</p>
+                    <h3>📹 Live Classes</h3>
+                    <p>Host online classes and meetings with video conferencing.</p>
                 </div>
                 <div class="feature-item">
-                    <h3>🏆 Gamification</h3>
-                    <p>Earn rewards and points for your learning achievements.</p>
+                    <h3>📊 Reports</h3>
+                    <p>View student performance data and course analytics.</p>
                 </div>
             </div>
 
             <h2>Our Story</h2>
-            <p>Forward LMS was born from the vision of creating a learning platform that goes beyond traditional online courses. We recognized the need for a more engaging, interactive, and rewarding educational experience.</p>
-            <p>Built with modern technologies like PHP, Supabase, and WebRTC, Forward LMS represents the future of online education.</p>
+            <p>Forward LMS is a straightforward learning management system built with PHP and MySQL. It provides the essential tools needed to manage online education without unnecessary complexity.</p>
+            <p>The system is designed to be reliable and easy to use for both educators and students.</p>
 
-            <h2>Our Values</h2>
+            <h2>What We Provide</h2>
             <ul>
-                <li>Accessibility: Education should be available to everyone</li>
-                <li>Innovation: Embracing new technologies to enhance learning</li>
-                <li>Community: Building connections between learners and educators</li>
-                <li>Excellence: Maintaining high standards in course quality</li>
-                <li>Transparency: Open and honest communication with our users</li>
+                <li>Course creation and management tools</li>
+                <li>Student enrollment and progress tracking</li>
+                <li>Assignment submission and grading</li>
+                <li>Communication tools for students and teachers</li>
+                <li>Basic reporting and analytics</li>
             </ul>
         </div>
     </div>

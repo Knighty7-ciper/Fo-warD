@@ -3,8 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../../backend/config/db.php';
-require_once __DIR__ . '/../../backend/config/auth.php';
+require_once 'backend/config/db.php';
+require_once 'backend/config/auth.php';
 
 $current_user = Auth::getUser();
 $is_logged_in = Auth::isAuthenticated();
@@ -25,9 +25,10 @@ $user_role = Auth::getUserRole();
         <?php endforeach; ?>
     <?php endif; ?>
 
-    <link rel="icon" type="image/png" href="/frontend/assets/images/icons/favicon.png">
+    <!-- Favicon with fallback -->
+    <link rel="icon" type="image/svg+xml" href="/frontend/assets/images/icons/favicon.svg" onerror="this.href='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzI1NjNlYiIvPgo8dGV4dCB4PSIxNiIgeT0iMjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiPjwvdGV4dD4KPHN2Zz4K';">
 
-    <meta name="description" content="Forward LMS - Community-Driven Learning Platform">
+    <meta name="description" content="Forward LMS - Learning Management System">
     <meta name="keywords" content="learning, education, courses, online learning">
 </head>
 <body class="<?php echo $body_class ?? ''; ?>">
@@ -37,12 +38,12 @@ $user_role = Auth::getUserRole();
         <div class="container">
             <div class="nav-brand">
                 <a href="/">
-                    <img src="/frontend/assets/images/logo.png" alt="Forward LMS" class="logo">
-                    <span class="brand-name">Forward</span>
+                    <img src="/frontend/assets/images/logo.png" alt="Forward LMS" class="logo" onerror="this.style.display='none'; this.nextElementSibling.style.marginLeft='0';">
+                    <span class="brand-name">Forward LMS</span>
                 </a>
             </div>
 
-             Added global search bar to header 
+            // Added global search bar to header 
             <?php if ($is_logged_in): ?>
             <div class="nav-search">
                 <form action="/frontend/search.php" method="GET">

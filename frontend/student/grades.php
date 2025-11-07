@@ -58,7 +58,7 @@ $courses = $db->select("
         <?php if (empty($courses)): ?>
             <div class="empty-state">
                 <p>You are not enrolled in any courses yet.</p>
-                <a href="/frontend/courses/browse.php" class="btn btn-primary">Browse Courses</a>
+                <a href="/frontend/courses.php" class="btn btn-primary">Browse Courses</a>
             </div>
         <?php else: ?>
             <div class="courses-grid">
